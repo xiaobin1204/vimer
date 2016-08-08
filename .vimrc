@@ -6,9 +6,17 @@ set laststatus=2            "总是显示状态行
 set expandtab               "以下三个配置配合使用，设置tab和缩进空格数
 set shiftwidth=4
 set tabstop=4
-set cursorline              "为光标所在行加下划线
+"set cursorline              "为光标所在行加下划线
 set number                  "显示行号
 set autoread                "文件在Vim之外修改过，自动重新读入
+
+"高亮显示当前行和列
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+
+"显示多余的空白字符
+set list listchars=tab:»·,trail:·
 
 set ignorecase              "检索时忽略大小写
 set hls                     "检索时高亮显示匹配项
@@ -46,7 +54,7 @@ execute pathogen#infect()
 let g:ctrlp_map = ',,'
 "垂直分屏打开文件
 "let g:ctrlp_open_multiple_files = 'v'
-""忽略某些文件
+"忽略某些文件
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/].(git)$',
