@@ -17,6 +17,13 @@ set cursorline cursorcolumn
 
 "显示多余的空白字符
 set list listchars=tab:»·,trail:·
+"n和N在搜索中用来查找下一个或者上一个搜索结果。但是在使用/或者?搜索时，它移动的方向不同，这个经常会混淆。所以，如果你希望n总是查找下一个搜索结果，N总是查找上一个搜索结果的话，你可以这么做
+nnoremap <expr> n  'Nn'[v:searchforward]
+nnoremap <expr> N  'nN'[v:searchforward]
+
+"快速上移或者下移几行  上移当前行2行:2]e 下移当前行动2行:2[e
+"nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+"nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
 
 set ignorecase              "检索时忽略大小写
 set hls                     "检索时高亮显示匹配项
